@@ -3,18 +3,19 @@ from typing import Mapping, Optional
 
 from quill.core.config import Config
 from quill.core.types import ServerTypes, SingletonMeta
-
+from fastapi import FastAPI
 
 class BaseServer(ABC):
     """Base class for Quill servers."""
 
-    def __init__(self) -> None:
+    def __init__(self, config: Config) -> None:
         self.name: ServerTypes = None
-        self.init()
+        self.app = None
+        """server instance"""
+        self.init(config=config)
         """Name of the server."""
-    
     @abstractmethod
-    def init(self):
+    def init(self, config: Config):
         """Initializes the server."""
 
     @abstractmethod
@@ -37,4 +38,4 @@ class ServerFactory(metaclass=SingletonMeta):
         """Creates a server instance with the given model name and config."""
         server_config = config.server
         name = server_config.name
-        return self.server_map[name]()
+        return self.server_map[name](config=config)

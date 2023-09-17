@@ -7,6 +7,8 @@ import urllib.parse
 import pkgutil
 from pathlib import Path
 
+QUILL_DIR = Path(__file__).parent.parent
+
 
 def load_module(file_name: Path | None):
     if file_name:

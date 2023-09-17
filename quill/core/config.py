@@ -171,8 +171,6 @@ class Config(BaseModel, BaseConfig):
                     message="Failed to create project directory.",
                     terminate=True,
                 )
-            finally:
-                os.chdir(project_name)
 
         if os.path.isfile("quill.toml"):
             pretty.error(
@@ -182,7 +180,8 @@ class Config(BaseModel, BaseConfig):
             )
         config = cls.collect()
         data = config.model_dump(mode="json")
-        with open("quill.toml", "w") as f:
+        quill_toml_file_path = os.path.join(config.project.project_root, "quill.toml")
+        with open(quill_toml_file_path, "w") as f:
             toml.dump(data, f)
 
         return config
