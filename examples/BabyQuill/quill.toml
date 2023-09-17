@@ -1,0 +1,14 @@
+[project]
+name = "BabyQuill"
+project_type = "static-website"
+project_root = "."
+
+[bot]
+name = "baby-quill"
+
+[llm]
+model_name = "gpt-3.5-turbo"
+
+[server]
+name = "static-website-server"
+port = 4458

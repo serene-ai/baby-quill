@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "quill"
+version = "0.1.0"
+description = "🔮 Baby Quill is the infant version of a next generation code genie"
+authors = ["Shubham Kushwaha <eric.liclair@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aenum = "^3.1.15"
+typer = "^0.9.0"
+rich = "^13.5.2"
+fastapi = "^0.103.1"
+uvicorn = "^0.23.2"
+toml = "^0.10.2"
+
+[tool.poetry.scripts]
+quill = "quill.cli:cli"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
